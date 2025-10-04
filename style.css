@@ -1,0 +1,10 @@
+body{background:#0b1220;color:#e6edf7}
+.card{background:#0f1629;border-color:#24304a}
+.navbar{border-bottom:1px solid #24304a}
+.stat{background:#0b1426}
+.badge{font-weight:700}
+.progress{height:1rem;background:#1a2340}
+.progress-bar{background:linear-gradient(90deg,#00e6b0,#39f)}
+.team.winner{box-shadow:0 0 0 3px #00e6b0 inset}
+#attendeeList li{background:transparent;color:#d9e2f5;border-color:#1f2a45}
+#attendeeList .team-pill{font-size:.75rem}
