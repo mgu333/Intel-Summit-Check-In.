@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Intel Summit Check-In</title>
+
+  <!-- Bootstrap for layout & components -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <span class="navbar-brand fw-bold">Intel • Team Sustainability Summit</span>
+      <span id="goalLabel" class="badge text-bg-info">Goal: <span id="goal">75</span> attendees</span>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <!-- Check-in form -->
+    <section class="card shadow-sm p-3 mb-4">
+      <h1 class="h4 mb-3">Attendee Check-In</h1>
+      <form id="checkinForm" class="row g-2" autocomplete="off">
+        <div class="col-12 col-md-5">
+          <label for="name" class="form-label">Attendee name</label>
+          <input id="name" class="form-control form-control-lg" placeholder="Enter name" required>
+        </div>
+        <div class="col-12 col-md-4">
+          <label for="team" class="form-label">Select team</label>
+          <select id="team" class="form-select form-select-lg" required>
+            <option value="">— choose —</option>
+            <option value="water">Team Water Wise</option>
+            <option value="netzero">Team Net Zero</option>
+            <option value="renew">Team Renewables</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-3 d-grid align-self-end">
+          <button class="btn btn-primary btn-lg" type="submit">Check In</button>
+        </div>
+      </form>
+      <p class="mt-2" id="greeting" aria-live="polite"></p>
+    </section>
+
+    <!-- Totals + progress -->
+    <section class="card shadow-sm p-3 mb-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h2 class="h5 m-0">Attendance</h2>
+        <span class="badge text-bg-secondary">Total: <span id="total">0</span></span>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-4">
+          <div class="team stat p-3 rounded border" id="card-water">
+            <div class="d-flex justify-content-between">
+              <span class="fw-semibold">Water Wise</span>
+              <span class="badge text-bg-light"><span id="waterCount">0</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="team stat p-3 rounded border" id="card-netzero">
+            <div class="d-flex justify-content-between">
+              <span class="fw-semibold">Net Zero</span>
+              <span class="badge text-bg-light"><span id="netzeroCount">0</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="team stat p-3 rounded border" id="card-renew">
+            <div class="d-flex justify-content-between">
+              <span class="fw-semibold">Renewables</span>
+              <span class="badge text-bg-light"><span id="renewCount">0</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress to goal -->
+      <div class="mt-4">
+        <div class="d-flex justify-content-between">
+          <span class="small text-muted">Progress to goal</span>
+          <span class="small"><span id="progressPct">0</span>%</span>
+        </div>
+        <div class="progress" role="progressbar" aria-label="Attendance progress"
+             aria-valuemin="0" aria-valuemax="100" aria-live="polite">
+          <div class="progress-bar" id="progressBar" style="width:0%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LevelUp: Attendee list -->
+    <section class="card shadow-sm p-3 mb-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="h5 m-0">Checked-In Attendees</h2>
+        <div class="btn-group">
+          <button id="clearData" class="btn btn-outline-danger btn-sm">Clear Data</button>
+          <button id="downloadCsv" class="btn btn-outline-secondary btn-sm">Export CSV</button>
+        </div>
+      </div>
+      <ul id="attendeeList" class="list-group list-group-flush mt-2"></ul>
+    </section>
+  </main>
+
+  <!-- Celebration toast -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="celebrateToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive">
+      <div class="d-flex">
+        <div class="toast-body" id="celebrateMsg">Goal reached! Great turnout 🎉</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
